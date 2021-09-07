@@ -13,7 +13,12 @@
     <title>Title</title>
 </head>
 <body>
-<c:out value="${group}"></c:out>
-<c:out value="${text}"></c:out>
+<c:forEach items="${scheduleList}" var="schedule">
+    <p>${schedule.lesson}</p>
+    <p>${schedule.currentGroup}</p>
+    <p>${schedule.lessonTime}</p>
+
+</c:forEach>
+
 </body>
 </html>
