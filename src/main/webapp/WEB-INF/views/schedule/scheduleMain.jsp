@@ -12,13 +12,46 @@
     <c:import url="../links.jsp"></c:import>
     <title>Title</title>
 </head>
-<body>
-<c:forEach items="${scheduleList}" var="schedule">
-    <p>${schedule.lesson}</p>
-    <p>${schedule.currentGroup}</p>
-    <p>${schedule.lessonTime}</p>
+<body >
+<div class="container" style="padding-top: 50px;">
+    <div class="row">
+        <div class="col-lg-8">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Lesson</th>
+                    <th scope="col">Group</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Subgroup</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
 
-</c:forEach>
+                    <c:forEach items="${scheduleList}" var="schedule">
+                    <tr>
+                        <td>${schedule.lesson}</td>
+                        <td>${schedule.currentGroup}</td>
+                        <td>${schedule.lessonTime}</td>
+                        <td>${schedule.subgroup}</td>
+                        <td><a type="button" href="#" class="btn btn-success">ЗАПИСЬ</a></td>
+                    </tr>
+                    </c:forEach>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-2 offset-lg-1">
+            <form method="post" action="/schedule/date">
+                <input name="date" id="date" type="date" value="date">
+                <button type="submit" class="btn bnt-success" >Submit</button>
+            </form>
+            <c:out value="${localDate}"></c:out>
+        </div>
+
+    </div>
+</div>
+
 
 </body>
 </html>

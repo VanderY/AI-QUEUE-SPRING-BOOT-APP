@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.sql.Date;
 
 @Getter
 @Setter
@@ -20,7 +20,7 @@ public class Schedule {
     private String lesson;
 
     @Column(name = "lesson_time")
-    private Timestamp lessonTime;
+    private Date lessonTime;
 
     @Column(name = "current_group")
     private String currentGroup;

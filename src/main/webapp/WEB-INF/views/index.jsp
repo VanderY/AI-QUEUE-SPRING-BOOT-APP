@@ -15,17 +15,19 @@
 <body>
  <div class="container">
      <div class="row" style="margin-top: 150px">
-         <div class="col-6 offset-4">
-             <form method="post" action="/schedule" >
-                 <select name="group">
-                     <option value="921701">921701</option>
-                     <option value="921702">921702</option>
-                     <option value="921703">921703</option>
-                     <option value="921704">921704</option>
-                 </select>
-                 <input name="text" type="text">
-                 <button type="submit" class="btn btn-success">Submit</button>
-             </form>
+         <div class="col-6 offset-3">
+          <div class="card text-center">
+              <form class="m-4" method="post" action="/schedule" >
+                  <label for="groupSelect" class="mb-2 h3">Select your group</label></br>
+                  <select class="mb-2" id="groupSelect" name="group">
+                      <option value="921701">921701</option>
+                      <option value="921702">921702</option>
+                      <option value="921703">921703</option>
+                      <option value="921704">921704</option>
+                  </select> </br>
+                  <button type="submit" class="btn btn-success">Submit</button>
+              </form>
+          </div>
          </div>
      </div>
  </div>
