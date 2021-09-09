@@ -1,5 +1,6 @@
 package com.ai.queue.aiQueue.POJO;
 
+import com.sun.xml.internal.ws.developer.UsesJAXBContext;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,8 +20,11 @@ public class Schedule {
     @Column(name = "lesson")
     private String lesson;
 
-    @Column(name = "lesson_time")
-    private Date lessonTime;
+    @Column(name = "week_day")
+    private int weekDay;
+
+    @Column(name = "week_number")
+    private int weekNumber;
 
     @Column(name = "current_group")
     private String currentGroup;

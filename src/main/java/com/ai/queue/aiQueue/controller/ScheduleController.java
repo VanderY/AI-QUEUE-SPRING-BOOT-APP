@@ -1,11 +1,15 @@
 package com.ai.queue.aiQueue.controller;
 
 import com.ai.queue.aiQueue.service.ScheduleServiceImpl;
+import org.apache.catalina.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -18,34 +22,34 @@ public class ScheduleController {
     private ScheduleServiceImpl scheduleServiceImpl;
 
     @Autowired
+    @Qualifier("scheduleServiceImpl")
     public void setScheduleServiceImpl(ScheduleServiceImpl scheduleServiceImpl) {
         this.scheduleServiceImpl = scheduleServiceImpl;
     }
 
-    @ModelAttribute("localDate")
-    public String localDate(){
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("d MMMM yyyy");
-        return LocalDate.now().format(format);
-    }
-
 
     @PostMapping
-    public String schedule(@ModelAttribute("group") String group, Model model){
-        model.addAttribute("scheduleList", scheduleServiceImpl.getScheduleByGroupAndTime(group, Date.valueOf(LocalDate.now())));
+    public String schedule(@ModelAttribute("group") String group,
+                           Model model,
+                           HttpServletRequest request) {
+        model.addAttribute("date", LocalDate.now().format(DateTimeFormatter.ofPattern("d MMMM yyyy")));
+        request.getSession().setAttribute("group", group);
+        model.addAttribute("scheduleList", scheduleServiceImpl.getScheduleListByGroup(group));
         return "schedule/scheduleMain";
     }
 
     @PostMapping("/date")
-    public String getScheduleByDate(@ModelAttribute("group") String group, @ModelAttribute("date") String date, Model model){
-        System.out.println(date);
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd" );
-        LocalDate ld = LocalDate.parse(date, dtf);
-        Date parsed = Date.valueOf(ld);
-        System.out.println(parsed);
-        model.addAttribute("scheduleList", scheduleServiceImpl.getScheduleByDate(parsed));
+    public String getScheduleByDate(@ModelAttribute("date") String date,
+                                    Model model,
+                                    HttpServletRequest request) {
+
+        String group = (String) request.getSession().getAttribute("group");
+
+        model.addAttribute("date", new SimpleDateFormat("d MMMM yyyy").format(Date.valueOf(LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd")))).toString());
+
+        model.addAttribute("scheduleList", scheduleServiceImpl.getScheduleListByGroupAndDate(group, Date.valueOf(LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd")))));
         return "schedule/scheduleMain";
     }
-
 
 
 }

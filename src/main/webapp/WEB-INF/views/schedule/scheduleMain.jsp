@@ -23,6 +23,7 @@
                     <th scope="col">Group</th>
                     <th scope="col">Date</th>
                     <th scope="col">Subgroup</th>
+                    <th scope="col">Type</th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
@@ -32,8 +33,9 @@
                     <tr>
                         <td>${schedule.lesson}</td>
                         <td>${schedule.currentGroup}</td>
-                        <td>${schedule.lessonTime}</td>
+                        <td>${date}</td>
                         <td>${schedule.subgroup}</td>
+                        <td>${schedule.lessonType}</td>
                         <td><a type="button" href="#" class="btn btn-success">ЗАПИСЬ</a></td>
                     </tr>
                     </c:forEach>
@@ -46,7 +48,7 @@
                 <input name="date" id="date" type="date" value="date">
                 <button type="submit" class="btn bnt-success" >Submit</button>
             </form>
-            <c:out value="${localDate}"></c:out>
+           <p class="h5">Дата: ${date}</p>
         </div>
 
     </div>
