@@ -1,18 +1,14 @@
-package com.ai.queue.aiQueue.controller;
+package com.ai.queue.aiQueue.service;
 
-import com.ai.queue.aiQueue.AiQueueApplication;
 import com.ai.queue.aiQueue.JSONparser.ParserScheduleAPI;
-import com.ai.queue.aiQueue.service.ScheduleServiceImpl;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.stereotype.Component;
 
-@Controller
-@RequestMapping("/")
-public class IndexController {
+import javax.annotation.PostConstruct;
 
+@Component
+public class Startup {
     private ParserScheduleAPI parserScheduleAPI;
     private ScheduleServiceImpl scheduleServiceImpl;
 
@@ -26,8 +22,10 @@ public class IndexController {
         this.parserScheduleAPI = parserScheduleAPI;
     }
 
-    @GetMapping
-    public String index(){
-        return "index";
+    @PostConstruct
+    private void postConstruct(){
+        scheduleServiceImpl.clearData();
+        scheduleServiceImpl.saveAll(parserScheduleAPI.getParsedScheduleList());
     }
+
 }

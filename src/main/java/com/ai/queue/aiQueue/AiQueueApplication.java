@@ -1,5 +1,8 @@
 package com.ai.queue.aiQueue;
 
+import com.ai.queue.aiQueue.JSONparser.ParserScheduleAPI;
+import com.ai.queue.aiQueue.service.ScheduleService;
+import com.ai.queue.aiQueue.service.ScheduleServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;

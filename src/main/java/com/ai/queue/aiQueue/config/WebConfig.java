@@ -1,5 +1,8 @@
 package com.ai.queue.aiQueue.config;
 
+import com.ai.queue.aiQueue.service.ScheduleServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
