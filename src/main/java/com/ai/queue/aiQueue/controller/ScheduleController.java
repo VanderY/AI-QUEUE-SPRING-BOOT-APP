@@ -34,7 +34,7 @@ public class ScheduleController {
                            HttpServletRequest request) {
         model.addAttribute("date", LocalDate.now().format(DateTimeFormatter.ofPattern("d MMMM yyyy")));
         request.getSession().setAttribute("group", group);
-        model.addAttribute("scheduleList", scheduleServiceImpl.getScheduleListByGroup(group));
+        model.addAttribute("scheduleList", scheduleServiceImpl.getScheduleListByGroupAndDate(group, Date.valueOf(LocalDate.now())));
         return "schedule/scheduleMain";
     }
 

@@ -1,6 +1,5 @@
 package com.ai.queue.aiQueue.POJO;
 
-import com.sun.xml.internal.ws.developer.UsesJAXBContext;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,8 +13,8 @@ import java.sql.Date;
 public class Schedule {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     @Column(name = "lesson")
     private String lesson;

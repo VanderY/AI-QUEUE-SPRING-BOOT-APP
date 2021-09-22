@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
+
 import javax.transaction.Transactional;
 import java.sql.Date;
 import java.time.DayOfWeek;
@@ -16,7 +17,7 @@ import java.util.List;
 @Service
 @Qualifier("scheduleServiceImpl")
 @EnableJpaRepositories
-public class ScheduleServiceImpl implements ScheduleService{
+public class ScheduleServiceImpl implements ScheduleService {
 
     private ScheduleDAO scheduleDAO;
 
@@ -37,20 +38,24 @@ public class ScheduleServiceImpl implements ScheduleService{
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(date);
         int weekNumber = calendar.get(Calendar.WEEK_OF_MONTH);
+        if(weekNumber==5){
+            weekNumber=1;
+        }
         System.out.println("WEEK DAY " + dayOfWeek + " WEEK NUMBER " + weekNumber + " DATE " + date + " GROUP " + group);
         return scheduleDAO.findAllByCurrentGroupAndWeekNumberAndWeekDay(group, weekNumber, dayOfWeek);
     }
 
     @Override
     public void saveAll(List<Schedule> list) {
-        for (Schedule schedule : list){
-        scheduleDAO.saveAndFlush(schedule);
+        int i = 1;
+        for (Schedule schedule : list) {
+            scheduleDAO.saveAndFlush(schedule);
         }
 
     }
 
     @Override
-    public void save(Schedule schedule){
+    public void save(Schedule schedule) {
         scheduleDAO.save(schedule);
         scheduleDAO.flush();
     }

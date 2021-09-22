@@ -70,7 +70,7 @@ public class ParserScheduleAPI {
 
     public List<Schedule> getParsedScheduleList() {
         List<Schedule> result = new ArrayList<>();
-        int id = 0;
+        int id = 1;
         ObjectMapper om = new ObjectMapper();
         for (String json : groupsJSON) {
             try {
@@ -89,18 +89,18 @@ public class ParserScheduleAPI {
                         schedule.setSubgroup(parserSchedule.getNumSubgroup());
                         schedule.setLesson(parserSchedule.getSubject());
                         schedule.setLessonType(parserSchedule.getLessonType());
+                        schedule.setId(id);
 
                         List<Integer> currentWeekNumber = parserSchedule.getWeekNumber();
-                        System.out.println(currentWeekNumber.toArray().toString());
                         for (Integer i : currentWeekNumber) {
                             if (i == 0) {
-                                System.out.println("zero" + i);
                                 continue;
                             } else {
-                                System.out.println("_done" + i);
                                 schedule.setWeekDay(currentWeekDayNumber);
                                 schedule.setWeekNumber(i);
                                 scheduleServiceImpl.save(schedule);
+                                System.out.println(id);
+                                id++;
                             }
                         }
                     }
