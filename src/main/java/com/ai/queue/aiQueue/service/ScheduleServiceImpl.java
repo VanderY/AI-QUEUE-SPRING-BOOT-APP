@@ -79,6 +79,6 @@ public class ScheduleServiceImpl implements ScheduleService {
         if(weekNumber==5){
             weekNumber=1;
         }
-        return scheduleDAO.findByCurrentGroupAndAndLessonAndWeekDayAndWeekNumber("921703", name, dayOfWeek, weekNumber);
+        return scheduleDAO.findByCurrentGroupAndLessonAndWeekDayAndWeekNumber("921703", name, dayOfWeek, weekNumber);
     }
 }
