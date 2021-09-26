@@ -22,7 +22,7 @@
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="mb-auto">
             <div>
-                <h3 class="float-md-middle mb-0">AI QUEUE</h3>
+                <a class="h3 float-md-middle mb-0 text-white" style="text-decoration: none;" href="/">AI QUEUE</a>
 
             </div>
         </header>
@@ -67,7 +67,7 @@
         </main>
 
         <footer class="mt-auto text-white-50">
-            <p>AI. queue <a href="iis.bsuir.by" class="text-white">IIS</a>, by <a href="https://twitter.com/"
+            <p>AI. queue <a href="https://iis.bsuir.by" class="text-white">IIS</a>, by <a href="https://twitter.com/"
                                                                                   class="text-white">@</a>.</p>
         </footer>
     </div>
