@@ -41,13 +41,11 @@ public class ScheduleServiceImpl implements ScheduleService {
         if(weekNumber==5){
             weekNumber=1;
         }
-        System.out.println("WEEK DAY " + dayOfWeek + " WEEK NUMBER " + weekNumber + " DATE " + date + " GROUP " + group);
         return scheduleDAO.findAllByCurrentGroupAndWeekNumberAndWeekDay(group, weekNumber, dayOfWeek);
     }
 
     @Override
     public void saveAll(List<Schedule> list) {
-        int i = 1;
         for (Schedule schedule : list) {
             scheduleDAO.saveAndFlush(schedule);
         }
