@@ -44,10 +44,14 @@ public class ScheduleController {
                                     HttpServletRequest request) {
 
         String group = (String) request.getSession().getAttribute("group");
-
+        if (date.isEmpty()) {
+            model.addAttribute("scheduleList", scheduleServiceImpl.getScheduleListByGroupAndDate(group, Date.valueOf(LocalDate.now())));
+        } else {
+            model.addAttribute("scheduleList", scheduleServiceImpl.getScheduleListByGroupAndDate(group, Date.valueOf(LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd")))));
+        }
         model.addAttribute("date", new SimpleDateFormat("d MMMM yyyy").format(Date.valueOf(LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd")))).toString());
 
-        model.addAttribute("scheduleList", scheduleServiceImpl.getScheduleListByGroupAndDate(group, Date.valueOf(LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd")))));
+
         return "schedule/scheduleMain";
     }
 

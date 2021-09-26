@@ -12,4 +12,5 @@ public interface ScheduleService {
     void save(Schedule schedule);
     void saveAll(List<Schedule> list);
     void clearData();
+    Schedule getScheduleByNameAndDate(String name, String date);
 }

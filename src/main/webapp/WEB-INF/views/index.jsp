@@ -16,8 +16,6 @@
 </head>
 
 
-
-
 <body>
 <div id="particles-js"></div>
 <div id="overlay" class="d-flex h-100 text-center text-white bg-transparent">
@@ -32,30 +30,45 @@
         <main class="px-3">
 
             <p class="lead">
-            <form method="post" action="/schedule" id="groupForm" hidden>
-            <p class="h1 mb-3">Select your group:</p>
-                <div class="mb-3">
-                    <select id="select" name="group" class="form-select">
-                        <option value="921701">921701</option>
-                        <option value="921702">921702</option>
-                        <option value="921703">921703</option>
-                        <option value="921704">921704</option>
-                    </select>
+            <form method="post" action="/schedule/date" id="groupForm" hidden>
+                <div id="groupSelect">
+                    <p class="h1 mb-3">Select your group:</p>
+                    <div class="mb-3">
+                        <select id="select" name="group" class="form-select">
+                            <option value="921701">921701</option>
+                            <option value="921702">921702</option>
+                            <option value="921703">921703</option>
+                            <option value="921704">921704</option>
+                        </select>
+                    </div>
+                    <a class="btn btn-lg btn-secondary fw-bold border-white bg-white text-dark-50" onclick="showDate()">Get
+                        started</a>
+                    </p>
                 </div>
-                <button type="submit" style="width: 100%" class="btn btn-lg btn-secondary bg-white text-dark-50 custom-shit"  >Submit</button>
+                <div id="dateForm" hidden>
+                    <p class="h1 mb-3">Select date:</p>
+                    <div class="mb-3">
+                        <input name="date" class="form-select" type="date" value="date" placeholder="${dateNow}">
+                    </div>
+                    <button style="width: 100%" class="btn btn-lg btn-secondary bg-white text-dark-50 custom-shit"> Submit
+                    </button>
+                </div>
             </form>
             </p>
-        <div id="getStartedButton">
-            <p class="lead" >
-            <h1>No fights. No misunderstandings.</h1>
-            <a class="btn btn-lg btn-secondary fw-bold border-white bg-white text-dark-50" onclick="showForm()" >Get started</a>
-            </p>
-        </div>
+
+            <div id="getStartedButton">
+                <p class="lead">
+                <h1>No fights. No misunderstandings.</h1>
+                <a class="btn btn-lg btn-secondary fw-bold border-white bg-white text-dark-50" onclick="showForm()">Get
+                    started</a>
+                </p>
+            </div>
+
         </main>
 
         <footer class="mt-auto text-white-50">
             <p>AI. queue <a href="iis.bsuir.by" class="text-white">IIS</a>, by <a href="https://twitter.com/"
-                                                                                             class="text-white">@</a>.</p>
+                                                                                  class="text-white">@</a>.</p>
         </footer>
     </div>
 </div>

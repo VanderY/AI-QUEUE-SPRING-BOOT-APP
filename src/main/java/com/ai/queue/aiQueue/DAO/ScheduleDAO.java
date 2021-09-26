@@ -10,4 +10,6 @@ import java.util.List;
 public interface ScheduleDAO extends JpaRepository<Schedule, Integer> {
     List<Schedule> findAllByCurrentGroupAndWeekNumberAndWeekDay(String group, int weekNumber, int weekDay);
     List<Schedule> findAllByCurrentGroup(String group);
+    List<Schedule> findAllByLesson(String lesson);
+    Schedule findByCurrentGroupAndAndLessonAndWeekDayAndWeekNumber(String group, String name, int weekDay, int weekNumber);
 }
