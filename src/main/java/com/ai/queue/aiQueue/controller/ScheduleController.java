@@ -40,10 +40,10 @@ public class ScheduleController {
 
     @PostMapping("/date")
     public String getScheduleByDate(@ModelAttribute("date") String date,
+                                    @ModelAttribute("group") String group,
                                     Model model,
                                     HttpServletRequest request) {
 
-        String group = (String) request.getSession().getAttribute("group");
         if (date.isEmpty()) {
             model.addAttribute("scheduleList", scheduleServiceImpl.getScheduleListByGroupAndDate(group, Date.valueOf(LocalDate.now())));
         } else {
