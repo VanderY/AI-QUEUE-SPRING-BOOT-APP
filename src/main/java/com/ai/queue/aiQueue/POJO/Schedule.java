@@ -6,8 +6,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.sql.Date;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "schedule")
 public class Schedule {
@@ -34,5 +32,59 @@ public class Schedule {
     @Column(name = "subgroup")
     private int subgroup;
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getLesson() {
+        return lesson;
+    }
+
+    public void setLesson(String lesson) {
+        this.lesson = lesson;
+    }
+
+    public int getWeekDay() {
+        return weekDay;
+    }
+
+    public void setWeekDay(int weekDay) {
+        this.weekDay = weekDay;
+    }
+
+    public int getWeekNumber() {
+        return weekNumber;
+    }
+
+    public void setWeekNumber(int weekNumber) {
+        this.weekNumber = weekNumber;
+    }
+
+    public String getCurrentGroup() {
+        return currentGroup;
+    }
+
+    public void setCurrentGroup(String currentGroup) {
+        this.currentGroup = currentGroup;
+    }
+
+    public String getLessonType() {
+        return lessonType;
+    }
+
+    public void setLessonType(String lessonType) {
+        this.lessonType = lessonType;
+    }
+
+    public int getSubgroup() {
+        return subgroup;
+    }
+
+    public void setSubgroup(int subgroup) {
+        this.subgroup = subgroup;
+    }
 }
