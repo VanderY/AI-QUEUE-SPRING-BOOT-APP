@@ -8,6 +8,7 @@ import com.ai.queue.aiQueue.entity.StudentQEntity;
 import com.ai.queue.aiQueue.service.ScheduleServiceImpl;
 import com.ai.queue.aiQueue.service.StudentQueueServiceImpl;
 import com.ai.queue.aiQueue.service.StudentServiceImpl;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -87,14 +88,14 @@ public class APIScheduleController {
 
         StudentQueue studentQueue = new StudentQueue();
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-mm-dd");
-        studentQueue.setDate(LocalDate.parse(qEntity.getDate(), dtf));
-
-        studentQueue.setLesson(scheduleServiceImpl.getScheduleByNameAndDate(qEntity.getSubject(), qEntity.getDate()));
-
+        String[] dates = qEntity.getDate().split("-");
+        LocalDate localDate = LocalDate.of(Integer.parseInt(dates[0]), Integer.parseInt(dates[1]),Integer.parseInt(dates[2]));
+        System.out.println(localDate);
+        studentQueue.setDate(localDate);
+        studentQueue.setLesson(qEntity.getSubject());
         studentQueue.setStudentID(studentService.getStudentByTelegramId(qEntity.getTelegramId()));
         studentQueueService.save(studentQueue);
 
-        return "done done done";
+        return "404";
     }
 }

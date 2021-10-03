@@ -18,6 +18,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,6 +90,7 @@ public class ParserScheduleAPI {
                         schedule.setSubgroup(parserSchedule.getNumSubgroup());
                         schedule.setLesson(parserSchedule.getSubject());
                         schedule.setLessonType(parserSchedule.getLessonType());
+                        schedule.setLessonTime(parserSchedule.getLessonTime());
                         schedule.setId(id);
 
                         List<Integer> currentWeekNumber = parserSchedule.getWeekNumber();

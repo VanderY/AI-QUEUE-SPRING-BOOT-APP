@@ -34,6 +34,7 @@
                     <th scope="col">Lesson</th>
                     <th scope="col">Subgroup</th>
                     <th scope="col">Type</th>
+                    <th scope="col">Time</th>
 <%--                    <th scope="col"></th>--%>
                 </tr>
                 </thead>
@@ -45,8 +46,10 @@
                         <td><c:if test="${schedule.subgroup == 0}">ОБЩ.</c:if>
                             <c:if test="${schedule.subgroup == 1}">1</c:if>
                             <c:if test="${schedule.subgroup == 2}">2</c:if>
+                            <c:if test="${schedule.subgroup == 2}">2</c:if>
                         </td>
                         <td>${schedule.lessonType}</td>
+                        <td>${schedule.lessonTime}</td>
                 <%--        <td><a type="button" href="#"
                                class="btn btn-secondary bg-white text-dark-50 custom-shit">ЗАПИСЬ</a></td>--%>
                     </tr>

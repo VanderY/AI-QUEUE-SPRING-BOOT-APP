@@ -68,13 +68,11 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     @Override
-    public Schedule getScheduleByNameAndDate(String name, String date) {
+    public Schedule getScheduleByNameAndDate(String name, LocalDate date) {
 
-        int dayOfWeek = LocalDate.parse(date).getDayOfWeek().getValue();
+        int dayOfWeek = date.getDayOfWeek().getValue();
         Calendar calendar = new GregorianCalendar();
-        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-mm-dd");
-        LocalDate ld = LocalDate.parse(date);
-        calendar.setTime(Date.valueOf(LocalDate.parse(date, formatter1)));
+        calendar.setTime(Date.valueOf(date));
         int weekNumber = calendar.get(Calendar.WEEK_OF_MONTH);
         if(weekNumber==5){
             weekNumber=1;

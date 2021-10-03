@@ -16,9 +16,8 @@ public class StudentQueue {
     @JoinColumn(name = "owner")
     private Student studentID;
 
-    @ManyToOne
-    @JoinColumn(name = "lesson")
-    private Schedule lesson;
+    @Column(name = "lesson_name")
+    private String lesson;
 
     @Column(name = "date")
     private LocalDate date;
@@ -58,11 +57,11 @@ public class StudentQueue {
         this.placeNum = placeNum;
     }
 
-    public Schedule getLesson() {
+    public String getLesson() {
         return lesson;
     }
 
-    public void setLesson(Schedule lesson) {
+    public void setLesson(String lesson) {
         this.lesson = lesson;
     }
 }

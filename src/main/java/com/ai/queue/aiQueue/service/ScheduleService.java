@@ -4,6 +4,7 @@ package com.ai.queue.aiQueue.service;
 import com.ai.queue.aiQueue.POJO.Schedule;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface ScheduleService {
@@ -12,5 +13,5 @@ public interface ScheduleService {
     void save(Schedule schedule);
     void saveAll(List<Schedule> list);
     void clearData();
-    Schedule getScheduleByNameAndDate(String name, String date);
+    Schedule getScheduleByNameAndDate(String name, LocalDate date);
 }
