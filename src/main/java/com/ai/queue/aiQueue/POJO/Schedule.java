@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "schedule")
@@ -31,6 +32,9 @@ public class Schedule {
 
     @Column(name = "subgroup")
     private int subgroup;
+
+    @OneToMany(mappedBy = "lesson")
+    private List<StudentQueue> students;
 
     public long getId() {
         return id;

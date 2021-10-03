@@ -7,6 +7,9 @@ public class StudentQEntity {
     private String date;
     private String qPlace;
 
+    public StudentQEntity() {
+    }
+
     public StudentQEntity(String telegramId, String subject, String date, String qPlace) {
         this.telegramId = telegramId;
         this.subject = subject;
@@ -44,5 +47,15 @@ public class StudentQEntity {
 
     public void setQPlace(String qPlace) {
         this.qPlace = qPlace;
+    }
+
+    @Override
+    public String toString() {
+        return "StudentQEntity{" +
+                "telegramId='" + telegramId + '\'' +
+                ", subject='" + subject + '\'' +
+                ", date='" + date + '\'' +
+                ", qPlace='" + qPlace + '\'' +
+                '}';
     }
 }

@@ -10,11 +10,12 @@ import com.ai.queue.aiQueue.service.StudentQueueServiceImpl;
 import com.ai.queue.aiQueue.service.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.sql.Date;
-import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -22,6 +23,8 @@ import java.util.List;
 public class APIScheduleController {
 
     private ScheduleServiceImpl scheduleServiceImpl;
+    private StudentQueueServiceImpl studentQueueService;
+    private StudentServiceImpl studentService;
 
     @Autowired
     @Qualifier("scheduleServiceImpl")
@@ -39,9 +42,6 @@ public class APIScheduleController {
             return  scheduleServiceImpl.getScheduleListByGroup(group);
         }
     }
-
-    private StudentQueueServiceImpl studentQueueService;
-    private StudentServiceImpl studentService;
 
     @Autowired
     public void setStudentQueueService(StudentQueueServiceImpl studentQueueService) {
@@ -81,12 +81,20 @@ public class APIScheduleController {
     }
 
     @PostMapping(value = "putIntoTheQueue", consumes = "application/json")
-    public String putIntoTheQ(StudentQEntity qEntity){
+    public String putIntoTheQ(@RequestBody StudentQEntity qEntity){
         System.out.println(qEntity);
-       /* StudentQueue studentQueue = new StudentQueue();
-        studentQueue.setDate(LocalDate.parse(qEntity.getDate()));
+        System.out.println(qEntity.toString());
+
+        StudentQueue studentQueue = new StudentQueue();
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-mm-dd");
+        studentQueue.setDate(LocalDate.parse(qEntity.getDate(), dtf));
+
+        studentQueue.setLesson(scheduleServiceImpl.getScheduleByNameAndDate(qEntity.getSubject(), qEntity.getDate()));
+
         studentQueue.setStudentID(studentService.getStudentByTelegramId(qEntity.getTelegramId()));
-        studentQueueService.save(studentQueue);*/
-        return "done done done ";
+        studentQueueService.save(studentQueue);
+
+        return "done done done";
     }
 }
