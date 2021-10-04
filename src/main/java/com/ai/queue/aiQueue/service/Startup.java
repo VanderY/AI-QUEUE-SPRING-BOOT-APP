@@ -24,8 +24,8 @@ public class Startup {
 
     @PostConstruct
     private void postConstruct(){
-        scheduleServiceImpl.clearData();
-        scheduleServiceImpl.saveAll(parserScheduleAPI.getParsedScheduleList());
+ /*       scheduleServiceImpl.clearData();
+        scheduleServiceImpl.saveAll(parserScheduleAPI.getParsedScheduleList());*/
     }
 
 }

@@ -48,7 +48,7 @@
                 <div id="dateForm" hidden>
                     <p class="h1 mb-3">Select date:</p>
                     <div class="mb-3">
-                        <input name="date" class="form-select" type="date" value="date" placeholder="${dateNow}">
+                        <input name="date" class="form-select" type="text" value="Select date" onfocus="(this.type='date')" onblur="(this.type='text')">
                     </div>
                     <button style="width: 100%" class="btn btn-lg btn-secondary bg-white text-dark-50 custom-shit"> Submit
                     </button>
@@ -67,8 +67,9 @@
         </main>
 
         <footer class="mt-auto text-white-50">
-            <p>AI. queue <a href="https://iis.bsuir.by" class="text-white">IIS</a>, by <a href="https://twitter.com/"
-                                                                                  class="text-white">@</a>.</p>
+            <p style="margin-bottom: 1px">AI. Queue by <a href="https://t.me/darkqqa" class="text-white">@dark</a> & <a
+                    href="https://t.me/vander_yan" class="text-white">@vander</a>.</p>
+            <p class="disabled">Feel free to contact us!</p>
         </footer>
     </div>
 </div>

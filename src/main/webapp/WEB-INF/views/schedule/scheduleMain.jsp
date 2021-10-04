@@ -21,21 +21,22 @@
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="mb-auto">
             <div>
-                <h3 class="float-md-middle mb-0">AI QUEUE</h3>
+                <a class="h3 float-md-middle mb-0 text-white" style="text-decoration: none;" href="/">AI QUEUE</a>
 
             </div>
         </header>
 
         <main class="px-3">
+            <p class="h4">Schedule for: ${date}</p>
             <p class="lead" style="background-color: rgba(55,55,55,0.7); border-radius: 5px; padding: 5px;">
-            <table class="table text-white" >
+
+            <table class="table text-white">
                 <thead>
                 <tr>
                     <th scope="col">Lesson</th>
                     <th scope="col">Subgroup</th>
                     <th scope="col">Type</th>
                     <th scope="col">Time</th>
-<%--                    <th scope="col"></th>--%>
                 </tr>
                 </thead>
                 <tbody>
@@ -43,15 +44,14 @@
                 <c:forEach items="${scheduleList}" var="schedule">
                     <tr>
                         <td>${schedule.lesson}</td>
-                        <td><c:if test="${schedule.subgroup == 0}">ОБЩ.</c:if>
+                        <td><c:if test="${schedule.subgroup == 0}"></c:if>
                             <c:if test="${schedule.subgroup == 1}">1</c:if>
-                            <c:if test="${schedule.subgroup == 2}">2</c:if>
                             <c:if test="${schedule.subgroup == 2}">2</c:if>
                         </td>
                         <td>${schedule.lessonType}</td>
                         <td>${schedule.lessonTime}</td>
-                <%--        <td><a type="button" href="#"
-                               class="btn btn-secondary bg-white text-dark-50 custom-shit">ЗАПИСЬ</a></td>--%>
+                            <%--        <td><a type="button" href="#"
+                                           class="btn btn-secondary bg-white text-dark-50 custom-shit">ЗАПИСЬ</a></td>--%>
                     </tr>
                 </c:forEach>
 
@@ -61,8 +61,9 @@
         </main>
 
         <footer class="mt-auto text-white-50">
-            <p>AI. queue <a href="iis.bsuir.by" class="text-white">IIS</a>, by <a href="https://twitter.com/"
-                                                                                  class="text-white">@</a>.</p>
+            <p style="margin-bottom: 1px">AI. Queue by <a href="https://t.me/darkqqa" class="text-white">@dark</a> & <a
+                    href="https://t.me/vander_yan" class="text-white">@vander</a>.</p>
+            <p class="disabled">Feel free to contact us!</p>
         </footer>
     </div>
 </div>
